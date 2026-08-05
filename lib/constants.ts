@@ -4,13 +4,13 @@ export const CTA_LABEL = "Request a Strategic Review";
 
 // Company legal details — surfaced in the footer, copyright line, and legal
 // pages. Required for Meta/WhatsApp Business API verification.
-// legalName + address are PLACEHOLDERS pending Vishy's confirmation against the
-// GST/MSME documents — swap both here (single source of truth) once confirmed.
+// legalName + address confirmed against the GST Registration Certificate
+// (GSTIN 33AADFZ7664C1Z3, shared by Karthik on 5 Aug 2026).
 export const COMPANY = {
   brandName: "Beacon House",
-  legalName: "Zenovate Consulting LLP", // PLACEHOLDER — confirm with Vishy
+  legalName: "Zenovate Consulting LLP",
   address:
-    "RMZ Millennia Business Park, Sholinganallur, Chennai, 600096, Tamil Nadu", // PLACEHOLDER — confirm with Vishy
+    "2nd Floor, East Wing, 143 Campus 1A, RMZ Millenia Business Park, MGR Main Road, Perungudi, Chennai, Tamil Nadu 600096",
   contactEmail: "care@beaconhouse.in",
 } as const;
 
