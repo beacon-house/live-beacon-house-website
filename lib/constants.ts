@@ -2,6 +2,24 @@ export const SITE_URL = "https://beaconhouse.in";
 export const CTA_URL = "https://admissions.beaconhouse.in/application-form";
 export const CTA_LABEL = "Request a Strategic Review";
 
+// Company legal details — surfaced in the footer, copyright line, and legal
+// pages. Required for Meta/WhatsApp Business API verification.
+// legalName + address are PLACEHOLDERS pending Vishy's confirmation against the
+// GST/MSME documents — swap both here (single source of truth) once confirmed.
+export const COMPANY = {
+  brandName: "Beacon House",
+  legalName: "Zenovate Consulting LLP", // PLACEHOLDER — confirm with Vishy
+  address:
+    "RMZ Millennia Business Park, Sholinganallur, Chennai, 600096, Tamil Nadu", // PLACEHOLDER — confirm with Vishy
+  contactEmail: "care@beaconhouse.in",
+} as const;
+
+// Privacy Policy + Terms & Conditions — linked in the footer.
+export const LEGAL_LINKS = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+] as const;
+
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/our-story" },

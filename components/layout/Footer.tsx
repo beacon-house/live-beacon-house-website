@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { CTA_URL, CTA_LABEL, FOOTER_QUICK_LINKS } from "@/lib/constants";
+import {
+  CTA_URL,
+  CTA_LABEL,
+  FOOTER_QUICK_LINKS,
+  LEGAL_LINKS,
+  COMPANY,
+} from "@/lib/constants";
 
 // Pages that already close with their own dedicated final-CTA section
 // immediately before the footer — showing the footer's CTA there too
@@ -39,6 +45,9 @@ export default function Footer() {
               Founder-supervised strategy, profile building, and candidacy
               development for selective universities.
             </p>
+            <address className="not-italic mt-5 font-sans text-xs text-white/65 leading-relaxed">
+              {COMPANY.address}
+            </address>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -77,9 +86,23 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-          <p className="font-sans text-xs text-white/65">
-            © {new Date().getFullYear()} Beacon House. All rights reserved.
-          </p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            <p className="font-sans text-xs text-white/65">
+              © {new Date().getFullYear()} {COMPANY.brandName} by{" "}
+              {COMPANY.legalName}. All rights reserved.
+            </p>
+            <nav className="flex items-center gap-4" aria-label="Legal">
+              {LEGAL_LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="font-sans text-xs text-white/65 hover:text-white transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
           <p className="font-sans text-xs text-white/65">
             In partnership with InGenius Prep — 150+ Former Admissions Officers
           </p>
