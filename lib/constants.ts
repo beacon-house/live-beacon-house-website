@@ -4,8 +4,8 @@ export const CTA_LABEL = "Request a Strategic Review";
 
 // Company legal details — surfaced in the footer, copyright line, and legal
 // pages. Required for Meta/WhatsApp Business API verification.
-// legalName + address confirmed against the GST Registration Certificate
-// (GSTIN 33AADFZ7664C1Z3, shared by Karthik on 5 Aug 2026).
+// legalName + address confirmed against the official registration
+// certificate shared by Karthik on 5 Aug 2026.
 export const COMPANY = {
   brandName: "Beacon House",
   legalName: "Zenovate Consulting LLP",
