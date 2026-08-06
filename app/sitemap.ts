@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { careerRoles } from "@/lib/careers-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -27,6 +28,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/careers`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    ...careerRoles.map((role) => ({
+      url: `${SITE_URL}/careers/${role.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    })),
     {
       url: `${SITE_URL}/privacy-policy`,
       lastModified: new Date(),

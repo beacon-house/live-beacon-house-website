@@ -27,13 +27,15 @@ export const NAV_LINKS = [
   { label: "Our Program", href: "/our-program" },
   { label: "Our Results", href: "/our-results" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Careers", href: "/careers" },
 ] as const;
 
-// Homepage section anchors — surfaced as quick links in the footer
-// since they're not standalone pages.
+// Footer quick links. Mostly homepage section anchors, since those aren't
+// standalone pages. Careers also appears in the main nav.
 export const FOOTER_QUICK_LINKS = [
   { label: "Why Beacon House", href: "/#why-different" },
   { label: "How We Build", href: "/#how-we-build" },
   { label: "The Journey", href: "/#journey" },
   { label: "FAQs", href: "/#faqs" },
+  { label: "Careers", href: "/careers" },
 ] as const;
