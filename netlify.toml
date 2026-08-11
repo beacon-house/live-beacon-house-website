@@ -12,3 +12,9 @@
   from = "/about-us"
   to = "/our-story"
   status = 301
+
+[[redirects]]
+  from = "/prezi"
+  to = "https://prezi.com/p/embed/s7C1uSZzCf6z3Ri35R6C"
+  status = 301
+  force = true
