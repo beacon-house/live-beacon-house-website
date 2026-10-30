@@ -6,8 +6,9 @@ import GuidesClosingCTA from "@/components/parent-guides/GuidesClosingCTA";
 import {
   PARENT_GUIDES_PATH,
   guideHref,
+  GUIDE_STAGES,
+  guidesByStage,
   liveGuides,
-  parentGuides,
   parentGuidesHub as hub,
 } from "@/lib/parent-guides";
 
@@ -59,52 +60,84 @@ export default function ParentGuidesPage() {
         }}
       />
 
+      {/* Opening: Vishy's framing, wide and short. */}
       <section className="about-gradient-ivory w-full">
-        <div className="mx-auto grid max-w-content gap-10 px-6 pb-16 pt-28 md:px-8 md:pb-24 md:pt-28 lg:grid-cols-12 lg:gap-12 lg:px-12">
-          {/* Left: Vishy's framing stays in view while the questions scroll. */}
-          <div className="lg:col-span-5 lg:self-start [@media(min-width:1024px)_and_(min-height:860px)]:sticky [@media(min-width:1024px)_and_(min-height:860px)]:top-[96px]">
+        <div className="mx-auto grid max-w-content gap-8 px-6 pb-14 pt-28 md:px-8 md:pb-20 md:pt-36 lg:grid-cols-12 lg:items-end lg:gap-14 lg:px-12">
+          <div className="lg:col-span-7">
             <p className="font-sans text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-navy">
               {hub.eyebrow}
             </p>
-            <h1 className="mt-3 font-serif text-[2.1rem] font-medium leading-[1.12] text-deep-ink md:text-[2.75rem] lg:text-[2.25rem] xl:text-[2.4rem]">
+            <h1 className="mt-3 font-serif text-[2.2rem] font-medium leading-[1.1] text-deep-ink md:text-[3rem] lg:text-[3.4rem]">
               {hub.title}
             </h1>
-            <div className="mt-4 h-0.5 w-12 bg-[var(--bh-warm-amber)]" />
-            <div className="mt-4 space-y-2.5">
-              {hub.intro.map((p) => (
-                <p key={p} className="text-[1rem] leading-[1.7] text-slate lg:text-[0.95rem] lg:leading-[1.65]">
+          </div>
+          <div className="space-y-3 lg:col-span-5 lg:pb-2">
+            {hub.intro.map((p) => (
+              <p key={p} className="text-[1rem] leading-[1.75] text-slate md:text-[1.05rem]">
+                {p}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The questions, placed along the school years. */}
+      <section aria-labelledby="start-here" className="w-full bg-white">
+        <div className="mx-auto max-w-content px-6 py-14 md:px-8 md:py-20 lg:px-12">
+          <div className="grid gap-6 lg:grid-cols-12 lg:gap-14">
+            <h2
+              id="start-here"
+              className="font-serif text-[1.6rem] leading-[1.2] text-deep-ink md:text-[2.1rem] lg:col-span-5"
+            >
+              {hub.startTitle}
+            </h2>
+            <div className="space-y-3 lg:col-span-7">
+              {hub.startBody.map((p) => (
+                <p key={p} className="text-[0.975rem] leading-[1.75] text-slate">
                   {p}
                 </p>
               ))}
             </div>
-
-            <div className="mt-6 border-t border-blue-gray pt-5">
-              <h2 className="font-serif text-[1.3rem] leading-snug text-deep-ink md:text-[1.4rem] lg:text-[1.2rem]">
-                {hub.startTitle}
-              </h2>
-              <div className="mt-2.5 space-y-2.5">
-                {hub.startBody.map((p) => (
-                  <p key={p} className="text-[0.95rem] leading-[1.7] text-slate lg:text-[0.9rem] lg:leading-[1.6]">
-                    {p}
-                  </p>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Right: the questions. */}
-          <ul
-            className="grid gap-4 sm:grid-cols-2 lg:col-span-7 lg:gap-5"
-            aria-label="Parent guides"
-          >
-            {parentGuides.map((guide) => (
-              <li key={guide.slug} className="flex">
-                <div className="w-full">
-                  <GuideCard guide={guide} as="h3" />
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className="relative mt-12 md:mt-16">
+            {/* The school-year line: across on desktop, down the side on phones. */}
+            <div
+              aria-hidden="true"
+              className="absolute left-0 right-0 top-[5px] hidden h-[2px] bg-navy/25 lg:block"
+            />
+            <div
+              aria-hidden="true"
+              className="absolute bottom-0 left-[5px] top-[6px] w-[2px] bg-navy/25 lg:hidden"
+            />
+
+            <ol className="relative grid gap-14 lg:grid-cols-4 lg:gap-8">
+              {GUIDE_STAGES.map((stage) => (
+                <li key={stage.id}>
+                  <section aria-label={stage.label}>
+                    <div className="flex items-center gap-4">
+                      <span
+                        aria-hidden="true"
+                        className={`relative z-10 h-[13px] w-[13px] flex-shrink-0 rounded-full border-2 border-navy ${
+                          stage.id === "any" ? "bg-white" : "bg-navy"
+                        }`}
+                      />
+                      <p className="font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-navy">
+                        {stage.label}
+                      </p>
+                    </div>
+                    <ul className="mt-7 space-y-10 pl-[29px] lg:mt-9 lg:pl-0">
+                      {guidesByStage(stage.id).map((guide) => (
+                        <li key={guide.slug}>
+                          <GuideCard guide={guide} as="h3" />
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 

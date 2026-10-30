@@ -138,57 +138,53 @@ export default async function GuidePage({ params }: Props) {
                   Parent Guides
                 </Link>
               </li>
-              <li aria-hidden="true">/</li>
-              <li aria-current="page" className="truncate max-w-[60vw] md:max-w-none">
+              <li aria-hidden="true" className="hidden md:block">/</li>
+              <li aria-current="page" className="hidden md:block">
                 {guide.title}
               </li>
             </ol>
           </nav>
 
-          <div className="mt-6 grid gap-10 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-7">
-              <h1 className="font-serif text-[2rem] font-medium leading-[1.14] text-deep-ink md:text-[2.75rem] lg:text-[3rem]">
-                {guide.title}
-              </h1>
+          <h1 className="mt-5 max-w-[24ch] font-serif text-[2rem] font-medium leading-[1.12] text-deep-ink md:text-[2.6rem] lg:text-[2.9rem]">
+            {guide.title}
+          </h1>
 
-              <div className="mt-6 flex items-center gap-3.5">
-                <Image
-                  src={GUIDE_AUTHOR.photo}
-                  alt={GUIDE_AUTHOR.name}
-                  width={48}
-                  height={48}
-                  className="h-12 w-12 rounded-full border border-blue-gray object-cover"
-                  priority
-                />
-                <div className="font-sans text-[0.9rem] leading-snug">
-                  <p className="text-deep-ink">
-                    By <span className="font-semibold">{GUIDE_AUTHOR.name}</span>, {GUIDE_AUTHOR.role}
-                  </p>
-                  <p className="mt-0.5 text-slate">{minutes} min read</p>
-                </div>
-              </div>
-
-              <div className="mt-8 max-w-[65ch]">
-                <GuideMarkdown>{content.intro}</GuideMarkdown>
+          {/* Same 3/9 grid as the body below: labels in the margin, text on the right. */}
+          <div className="mt-8 grid gap-y-8 border-t border-blue-gray pt-8 md:mt-10 lg:grid-cols-12 lg:gap-x-14 lg:pt-10">
+            <div className="flex items-center gap-3.5 lg:col-span-3 lg:flex-col lg:items-start lg:gap-3">
+              <Image
+                src={GUIDE_AUTHOR.photo}
+                alt={GUIDE_AUTHOR.name}
+                width={48}
+                height={48}
+                className="h-12 w-12 rounded-full border border-blue-gray object-cover"
+                priority
+              />
+              <div className="font-sans text-[0.875rem] leading-snug">
+                <p className="text-deep-ink">
+                  By <span className="font-semibold">{GUIDE_AUTHOR.name}</span>,{" "}
+                  <span className="lg:block">{GUIDE_AUTHOR.role}</span>
+                </p>
+                <p className="mt-1 text-slate">{minutes} min read</p>
               </div>
             </div>
 
-            <aside
-              aria-labelledby="short-answer"
-              className="hero-cta lg:col-span-5 lg:self-start"
-            >
-              <div className="rounded-xl border border-blue-gray border-l-[3px] border-l-navy bg-white p-6 shadow-[0_18px_40px_rgba(20,33,61,0.07)] md:p-8">
-                <h2
-                  id="short-answer"
-                  className="font-sans text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-navy"
-                >
-                  The short answer
-                </h2>
-                <div className="mt-4 [&_p]:text-[1.05rem] [&_p]:leading-[1.75] [&_p]:text-deep-ink md:[&_p]:text-[1.1rem]">
-                  <GuideMarkdown>{content.shortAnswer}</GuideMarkdown>
-                </div>
+            <div className="lg:col-span-9 lg:max-w-[720px]">
+              <GuideMarkdown>{content.intro}</GuideMarkdown>
+            </div>
+
+            <section aria-labelledby="short-answer" className="contents">
+              <h2
+                id="short-answer"
+                className="flex items-center gap-3 font-sans text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-navy lg:col-span-3 lg:mt-2 lg:block"
+              >
+                <span aria-hidden="true" className="h-px w-8 bg-[var(--bh-warm-amber)] lg:mb-3 lg:block lg:h-[2px]" />
+                The short answer
+              </h2>
+              <div className="hero-cta -mt-4 lg:col-span-9 lg:mt-0 lg:max-w-[720px] [&_p]:!font-serif [&_p]:!text-[1.25rem] [&_p]:!leading-[1.55] [&_p]:!text-deep-ink md:[&_p]:!text-[1.375rem]">
+                <GuideMarkdown>{content.shortAnswer}</GuideMarkdown>
               </div>
-            </aside>
+            </section>
           </div>
         </div>
       </header>
@@ -197,14 +193,14 @@ export default async function GuidePage({ params }: Props) {
       <div className="w-full bg-white">
         <div className="mx-auto grid max-w-content gap-10 px-6 py-12 md:px-8 md:py-16 lg:grid-cols-12 lg:gap-14 lg:px-12">
           <nav aria-label="In this guide" className="lg:col-span-3">
-            <details className="group rounded-xl border border-blue-gray bg-blue-mist/60 lg:hidden">
-              <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-sans text-[0.95rem] font-semibold text-deep-ink">
+            <details className="group border-y border-blue-gray lg:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between py-4 font-sans text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-navy">
                 In this guide
                 <span aria-hidden="true" className="text-navy transition-transform group-open:rotate-180">
                   ▾
                 </span>
               </summary>
-              <ol className="space-y-1 border-t border-blue-gray px-5 py-3">
+              <ol className="space-y-1 border-t border-blue-gray py-3">
                 {toc.map((item) => (
                   <li key={item.id}>
                     <a href={`#${item.id}`} className="block py-1.5 text-[0.92rem] leading-snug text-slate hover:text-navy">
@@ -262,7 +258,7 @@ export default async function GuidePage({ params }: Props) {
 
             <section
               aria-labelledby="about-author"
-              className="mt-14 rounded-xl border border-blue-gray bg-blue-mist p-6 md:p-8"
+              className="mt-14 border-t border-blue-gray pt-10"
             >
               <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
                 <Image

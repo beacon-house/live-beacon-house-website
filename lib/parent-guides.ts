@@ -5,8 +5,11 @@
 
 export type GuideStatus = "live" | "coming";
 
+export type GuideStage = "class-8-9" | "class-10" | "class-11-12" | "any";
+
 export interface ParentGuide {
   slug: string;
+  stage: GuideStage;
   title: string;
   cardSummary: string;
   status: GuideStatus;
@@ -47,6 +50,7 @@ const PUBLISHED = "2026-10-30";
 export const parentGuides: ParentGuide[] = [
   {
     slug: "child-doesnt-know-what-to-study",
+    stage: "class-8-9",
     title: "My child doesn’t know what to study. Where do we begin?",
     cardSummary:
       "Good marks, enthusiasm for a subject and a lasting academic interest are not always the same thing. Understand how exposure, reflection and small experiments can help a student identify the directions worth exploring further.",
@@ -55,6 +59,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "choosing-subjects-after-class-10",
+    stage: "class-10",
     title: "Choosing subjects after Class 10",
     cardSummary:
       "Subject choices should support the student while preserving the right university pathways. Explore how interests, academic strengths, course requirements, school options and workload can inform a more deliberate decision.",
@@ -63,6 +68,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "meaningful-student-profile",
+    stage: "class-8-9",
     title: "What does a meaningful student profile look like?",
     cardSummary:
       "A strong profile develops through sustained work in a coherent direction. See how projects, research, writing and other commitments can build depth, and how to decide what to deepen, reduce or stop.",
@@ -71,6 +77,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "when-to-start-college-planning",
+    stage: "class-8-9",
     title: "When should college planning begin?",
     cardSummary:
       "Starting early should create room to explore. Understand what is useful in Classes 8, 9 and 10, what can wait, and how preparation can develop alongside schoolwork and the student’s changing interests.",
@@ -79,6 +86,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "india-and-overseas-options",
+    stage: "class-10",
     title: "Keeping India and overseas options open",
     cardSummary:
       "Families do not always need to choose a destination at the outset. Examine the academic choices, entrance preparation, costs and time commitments involved in keeping more than one pathway viable.",
@@ -87,6 +95,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "research-or-capstone-project",
+    stage: "class-11-12",
     title: "Research or a capstone project?",
     cardSummary:
       "Different forms of work serve different purposes. Understand what research and capstone projects involve, the student’s responsibilities, the mentor’s role and the kinds of outputs each can produce.",
@@ -95,6 +104,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "is-class-11-too-late",
+    stage: "class-11-12",
     title: "Is Class 11 too late to start?",
     cardSummary:
       "The time available matters, but so does the work already done. Understand what can still be strengthened, which decisions need attention now and how to build a realistic plan around schoolwork and application timelines.",
@@ -103,6 +113,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "ib-vs-a-levels-vs-cbse",
+    stage: "class-10",
     title: "IB, A-levels or CBSE: how should we choose?",
     cardSummary:
       "The right curriculum depends on the student and the pathways they may pursue. Explore how learning style, assessment, subject flexibility, school quality and university plans should inform the choice.",
@@ -111,6 +122,7 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "choosing-a-college-counsellor",
+    stage: "any",
     title: "What should parents look for in a college counsellor?",
     cardSummary:
       "A counselling relationship may shape several years of a student’s development. Understand what to ask about the people involved, the work delivered, progress reviews, continuity and programme costs before choosing a partner.",
@@ -118,12 +130,25 @@ export const parentGuides: ParentGuide[] = [
   },
   {
     slug: "budget-for-undergraduate-study-abroad",
+    stage: "any",
     title: "How should we budget for undergraduate study abroad?",
     cardSummary:
       "A useful budget looks beyond tuition. Understand how living expenses, course duration, scholarships and preparation costs fit together, so that financial considerations inform the university plan from the beginning.",
     status: "coming",
   },
 ];
+
+// The hub places each question at the class where families usually ask it.
+// Stage labels are draft UI labels, pending Vishy's review.
+export const GUIDE_STAGES: { id: GuideStage; label: string }[] = [
+  { id: "class-8-9", label: "Class 8–9" },
+  { id: "class-10", label: "Class 10" },
+  { id: "class-11-12", label: "Class 11–12" },
+  { id: "any", label: "At any stage" },
+];
+
+export const guidesByStage = (stage: GuideStage) =>
+  parentGuides.filter((g) => g.stage === stage);
 
 export const liveGuides = () => parentGuides.filter((g) => g.status === "live");
 
