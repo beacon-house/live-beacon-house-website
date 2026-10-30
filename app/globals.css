@@ -139,3 +139,69 @@ body:has(.mobile-sticky-cta-bar) {
     animation: none !important;
   }
 }
+
+/* Parent guides: bullet dots and phone-width tables. */
+@layer components {
+  .guide-ul > li {
+    padding-left: 1.5rem;
+  }
+
+  .guide-ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.3rem;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background-color: var(--bh-navy);
+  }
+
+  @media (max-width: 767px) {
+    .guide-table table,
+    .guide-table tbody,
+    .guide-table tr,
+    .guide-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .guide-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .guide-table tr + tr {
+      border-top: 6px solid var(--bh-soft-blue-mist);
+    }
+
+    .guide-table td {
+      border-top: 0;
+      padding: 0.25rem 1.1rem 0.75rem;
+    }
+
+    .guide-table td:first-child {
+      padding-top: 1rem;
+      color: var(--bh-deep-ink);
+    }
+
+    .guide-table td:last-child {
+      padding-bottom: 1.1rem;
+    }
+
+    .guide-table td[data-label]:not([data-label=""])::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bh-navy);
+    }
+  }
+}

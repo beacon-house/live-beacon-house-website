@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
 import { careerRoles } from "@/lib/careers-data";
+import { guideHref, liveGuides, PARENT_GUIDES_PATH } from "@/lib/parent-guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -28,6 +29,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}${PARENT_GUIDES_PATH}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...liveGuides().map((guide) => ({
+      url: `${SITE_URL}${guideHref(guide.slug)}`,
+      lastModified: new Date(guide.dateModified ?? guide.datePublished ?? Date.now()),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     {
       url: `${SITE_URL}/careers`,
       lastModified: new Date(),

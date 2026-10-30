@@ -27,6 +27,7 @@ export const NAV_LINKS = [
   { label: "Our Program", href: "/our-program" },
   { label: "Our Results", href: "/our-results" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Parent Guides", href: "/parent-guides" },
   { label: "Careers", href: "/careers" },
 ] as const;
 
@@ -37,5 +38,6 @@ export const FOOTER_QUICK_LINKS = [
   { label: "How We Build", href: "/#how-we-build" },
   { label: "The Journey", href: "/#journey" },
   { label: "FAQs", href: "/#faqs" },
+  { label: "Parent Guides", href: "/parent-guides" },
   { label: "Careers", href: "/careers" },
 ] as const;
