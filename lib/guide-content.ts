@@ -14,6 +14,9 @@ export interface GuideSection {
 }
 
 export interface GuideContent {
+  // The opening line set large: the parent's question in quotes, or the
+  // scene the guide starts from. The words are the guide's own first words.
+  opening: { kind: "quote" | "lede"; text: string };
   intro: string;
   shortAnswer: string;
   sections: GuideSection[];
@@ -61,6 +64,21 @@ function linkNoteMarkers(markdown: string) {
   );
 }
 
+function splitOpening(intro: string): {
+  opening: GuideContent["opening"];
+  rest: string;
+} {
+  const quote = intro.match(/^[“"]([^”"]+)[”"]\s*([\s\S]*)$/);
+  if (quote) {
+    return { opening: { kind: "quote", text: quote[1].trim() }, rest: quote[2].trim() };
+  }
+  // No quote: lift the first sentence, or the first two when the first is short.
+  const sentences = intro.match(/[^.?!]+[.?!]+(\s+|$)/g) ?? [intro];
+  const take = sentences[0].trim().length < 30 ? 2 : 1;
+  const lede = sentences.slice(0, take).join("").trim();
+  return { opening: { kind: "lede", text: lede }, rest: intro.slice(intro.indexOf(lede) + lede.length).trim() };
+}
+
 export function loadGuideContent(slug: string): GuideContent {
   const file = path.join(process.cwd(), "content", "parent-guides", `${slug}.md`);
   const raw = fs.readFileSync(file, "utf8");
@@ -99,8 +117,11 @@ export function loadGuideContent(slug: string): GuideContent {
     }
   }
 
+  const { opening, rest } = splitOpening(intro);
+
   return {
-    intro: linkNoteMarkers(linkGuideTitles(intro, slug)),
+    opening,
+    intro: linkNoteMarkers(linkGuideTitles(rest, slug)),
     shortAnswer: linkNoteMarkers(shortAnswer),
     sections,
     sources,

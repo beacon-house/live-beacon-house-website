@@ -46,12 +46,21 @@ function rehypeTableLabels() {
   return (tree: Root) => walk(tree);
 }
 
-const components: Components = {
-  p: ({ children }) => (
-    <p className="mt-5 first:mt-0 text-[1.0625rem] md:text-[1.125rem] leading-[1.8] text-slate">
-      {children}
-    </p>
-  ),
+const baseComponents: Components = {
+  // A paragraph that opens with a bold phrase reads as a decision or a case:
+  // the phrase becomes a serif run-in head on its own line.
+  p: ({ children, node }) => {
+    const first = node?.children?.[0];
+    const leads =
+      first?.type === "element" && (first as Element).tagName === "strong";
+    return (
+      <p
+        className={`${leads ? "guide-lead" : ""} mt-5 first:mt-0 text-[1.0625rem] md:text-[1.125rem] leading-[1.8] text-slate`}
+      >
+        {children}
+      </p>
+    );
+  },
   h3: ({ children }) => (
     <h3 className="mt-10 font-serif text-xl md:text-[1.4rem] leading-snug text-deep-ink">
       {children}
@@ -124,7 +133,56 @@ const components: Components = {
   hr: () => <hr className="my-10 border-blue-gray" />,
 };
 
-export default function GuideMarkdown({ children }: { children: string }) {
+// Which sources a marker points to: "4" -> [4], "1–4" -> [1,2,3,4], "2, 7" -> [2,7].
+function sourceNumbers(label: string): number[] {
+  const out: number[] = [];
+  for (const part of label.split(",")) {
+    const [a, b] = part.trim().split(/[–-]/).map((n) => parseInt(n, 10));
+    if (Number.isNaN(a)) continue;
+    for (let n = a; n <= (Number.isNaN(b) || b === undefined ? a : b); n++) out.push(n);
+  }
+  return out;
+}
+
+const inlineOnly: Components = {
+  p: ({ children }) => <>{children}</>,
+  a: ({ href = "", children }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-navy underline decoration-blue-gray underline-offset-2 hover:decoration-navy">
+      {children}
+    </a>
+  ),
+};
+
+export default function GuideMarkdown({
+  children,
+  sources,
+}: {
+  children: string;
+  sources?: string[];
+}) {
+  const components: Components = {
+    ...baseComponents,
+    a: (props) => {
+      const href = props.href ?? "";
+      if (href.startsWith("#source-") && sources?.length) {
+        const label = String(props.children);
+        const numbers = sourceNumbers(label).filter((n) => sources[n - 1]);
+        return (
+          <>
+            {baseComponents.a ? (baseComponents.a as (p: typeof props) => React.ReactNode)(props) : null}
+            {numbers.map((n) => (
+              <span key={n} className="sidenote" aria-hidden="true">
+                <span className="mr-1 font-semibold text-navy">{n}</span>
+                <ReactMarkdown components={inlineOnly}>{sources[n - 1]}</ReactMarkdown>
+              </span>
+            ))}
+          </>
+        );
+      }
+      return baseComponents.a ? (baseComponents.a as (p: typeof props) => React.ReactNode)(props) : null;
+    },
+  };
+
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}

@@ -32,6 +32,13 @@ export const parentGuidesHub = {
     "The right next step depends on the student’s stage, strengths, interests and ambitions.",
     "Explore the guides below to understand the choices ahead and prepare for more informed conversations with your child.",
   ],
+  // The same three sentences as startBody[0], split so each student
+  // situation can be set on its own. Key phrase is emphasised, words unchanged.
+  startSituations: [
+    { before: "Some students have ", key: "a clear interest", slug: "research-or-capstone-project", after: " but need to understand where it could lead." },
+    { before: "Others are doing well academically ", key: "without knowing what they want to study", slug: "child-doesnt-know-what-to-study", after: "." },
+    { before: "Many are ", key: "already busy", slug: "meaningful-student-profile", after: ", yet unsure whether their effort is building towards anything meaningful." },
+  ],
   readLabel: "Read the Guide",
   comingLabel: "Guide coming soon",
   closing: {
@@ -46,6 +53,15 @@ export const parentGuidesHub = {
 } as const;
 
 const PUBLISHED = "2026-10-30";
+
+// Parent questions shown beside the hub headline. Each is the opening question
+// of its guide, word for word, and links to that guide.
+export const HUB_PARENT_QUESTIONS = [
+  { slug: "when-to-start-college-planning", text: "When should we start planning for college?" },
+  { slug: "is-class-11-too-late", text: "My child is already in Class 11. Are we too late?" },
+  { slug: "ib-vs-a-levels-vs-cbse", text: "Which board should we choose for universities abroad?" },
+  { slug: "research-or-capstone-project", text: "Does my child need a published research paper?" },
+];
 
 export const parentGuides: ParentGuide[] = [
   {
@@ -164,3 +180,10 @@ export const GUIDE_AUTHOR = {
   photo: "/about-us/vishy.png",
   linkedIn: "https://www.linkedin.com/in/viswanathan-r-8504182/",
 } as const;
+
+// Split a title where the meaning breaks: after the first ": " or ". ".
+// "IB, A-levels or CBSE: how should we choose?" -> two lines at the colon.
+export function titleLines(title: string): string[] {
+  const m = title.match(/^(.+?[:.])\s+(.+)$/);
+  return m ? [m[1], m[2]] : [title];
+}
