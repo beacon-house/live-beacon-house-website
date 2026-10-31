@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SITE_URL } from "@/lib/constants";
 import GuideMarkdown from "@/components/parent-guides/GuideMarkdown";
-import GuideRow from "@/components/parent-guides/GuideRow";
+import GuideCard from "@/components/parent-guides/GuideCard";
 import GuidesClosingCTA from "@/components/parent-guides/GuidesClosingCTA";
 import GuideTocRail from "@/components/parent-guides/GuideTocRail";
 import GuideMobileBar from "@/components/parent-guides/GuideMobileBar";
@@ -305,11 +305,11 @@ export default async function GuidePage({ params }: Props) {
 
       <GuidesClosingCTA />
 
-      {/* More guides, on the same grid: label in the margin, rows in the text. */}
+      {/* More guides, on the same grid: label in the margin, cards beside it. */}
       <section aria-labelledby="more-guides" className="w-full bg-white">
         <div className="mx-auto max-w-content px-6 py-16 md:px-8 md:py-20 lg:px-12">
           <div className="ed-grid gap-y-6">
-            <div className="ed-margin lg:pt-7">
+            <div className="ed-margin lg:pt-1">
               <h2 id="more-guides" className="font-sans text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-navy">
                 More Parent Guides
               </h2>
@@ -320,10 +320,10 @@ export default async function GuidePage({ params }: Props) {
                 All Parent Guides
               </Link>
             </div>
-            <ul className="ed-wide border-b border-blue-gray">
+            <ul className="ed-wide grid gap-5 md:grid-cols-3">
               {nextGuides(slug).map((g) => (
                 <li key={g.slug}>
-                  <GuideRow guide={g} />
+                  <GuideCard guide={g} />
                 </li>
               ))}
             </ul>
