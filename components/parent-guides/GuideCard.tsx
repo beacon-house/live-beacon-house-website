@@ -29,16 +29,20 @@ export default function GuideCard({ guide }: { guide: ParentGuide }) {
   return (
     <Link
       href={guideHref(guide.slug)}
-      className={`group ${shell} border-blue-gray bg-white transition-[border-color,box-shadow] duration-200 hover:border-navy hover:shadow-[0_8px_24px_rgba(20,33,61,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy`}
+      className={`group ${shell} border-blue-gray bg-white transition-[border-color,box-shadow] duration-200 [@media(hover:hover)]:hover:border-navy [@media(hover:hover)]:hover:shadow-[0_8px_24px_rgba(20,33,61,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy`}
     >
-      <h3 className="font-serif text-[1.2rem] leading-snug text-deep-ink [text-wrap:balance] group-hover:text-navy md:text-[1.3rem]">
+      <h3 className="font-serif text-[1.2rem] leading-snug text-deep-ink [text-wrap:balance] [@media(hover:hover)]:group-hover:text-navy md:text-[1.3rem]">
         {guide.title}
       </h3>
       <p className="mt-3 text-[0.9rem] leading-[1.65] text-slate">{guide.cardSummary}</p>
-      <span className="mt-auto inline-flex items-center gap-1.5 pt-5 font-sans text-[0.75rem] font-semibold uppercase tracking-[0.12em] text-navy">
-        {parentGuidesHub.readLabel}
-        <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">
-          →
+      {/* Navy, not amber: amber is kept for the booking button. Phones get no
+          hover styles, so a tapped card does not stay highlighted. */}
+      <span className="mt-auto pt-5">
+        <span className="inline-flex items-center gap-2 rounded-lg border-[1.5px] border-navy px-4 py-2 font-sans text-[0.875rem] font-semibold text-navy transition-colors duration-200 [@media(hover:hover)]:group-hover:bg-navy [@media(hover:hover)]:group-hover:text-white">
+          {parentGuidesHub.readLabel}
+          <span aria-hidden="true" className="transition-transform duration-200 [@media(hover:hover)]:group-hover:translate-x-0.5">
+            →
+          </span>
         </span>
       </span>
     </Link>

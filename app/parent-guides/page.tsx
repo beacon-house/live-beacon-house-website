@@ -80,11 +80,15 @@ export default function ParentGuidesPage() {
               <h2 className="font-serif text-[1.4rem] leading-[1.25] text-deep-ink md:text-[1.6rem]">
                 {hub.startTitle}
               </h2>
-              <div className="mt-3 space-y-3 text-[1.02rem] leading-[1.7] text-slate">
-                {hub.startBody.map((p) => (
-                  <p key={p}>{p}</p>
+              <ul className="mt-4 space-y-2.5 text-[1.02rem] leading-[1.6] text-slate">
+                {hub.startSituations.map((s) => (
+                  <li key={s} className="flex gap-3">
+                    <span aria-hidden="true" className="mt-[0.6em] h-[6px] w-[6px] flex-shrink-0 rounded-full bg-amber" />
+                    <span>{s}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <p className="mt-4 text-[1.02rem] leading-[1.7] text-slate">{hub.startBody}</p>
             </div>
           </div>
         </div>
@@ -92,6 +96,14 @@ export default function ParentGuidesPage() {
 
       <section aria-label="All guides" className="w-full bg-white">
         <div className="mx-auto max-w-content px-6 py-14 md:px-8 md:py-20 lg:px-12">
+          <div className="ed-grid mb-10 md:mb-14">
+            <div className="ed-text">
+              <h2 className="font-serif text-[1.6rem] font-medium leading-[1.2] text-deep-ink md:text-[2rem]">
+                {hub.guidesTitle}
+              </h2>
+              <p className="mt-3 text-[1.02rem] leading-[1.7] text-slate">{hub.guidesBody}</p>
+            </div>
+          </div>
           {/* The school-year spine runs down the margin. Each class label stays
               in view while its guides pass. */}
           <div className="relative">

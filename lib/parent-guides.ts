@@ -27,18 +27,17 @@ export const parentGuidesHub = {
     "Our guides help families understand these connections, weigh the trade-offs and decide what deserves attention now.",
   ],
   startTitle: "Start with the question your family is facing.",
-  startBody: [
-    "Some students have a clear interest but need to understand where it could lead. Others are doing well academically without knowing what they want to study. Many are already busy, yet unsure whether their effort is building towards anything meaningful.",
-    "The right next step depends on the student’s stage, strengths, interests and ambitions.",
-    "Explore the guides below to understand the choices ahead and prepare for more informed conversations with your child.",
-  ],
-  // The same three sentences as startBody[0], split so each student
-  // situation can be set on its own. Key phrase is emphasised, words unchanged.
+  // Vishy's paragraph, one sentence per bullet, words unchanged.
   startSituations: [
-    { before: "Some students have ", key: "a clear interest", slug: "research-or-capstone-project", after: " but need to understand where it could lead." },
-    { before: "Others are doing well academically ", key: "without knowing what they want to study", slug: "child-doesnt-know-what-to-study", after: "." },
-    { before: "Many are ", key: "already busy", slug: "meaningful-student-profile", after: ", yet unsure whether their effort is building towards anything meaningful." },
+    "Some students have a clear interest but need to understand where it could lead.",
+    "Others are doing well academically without knowing what they want to study.",
+    "Many are already busy, yet unsure whether their effort is building towards anything meaningful.",
   ],
+  startBody: "The right next step depends on the student’s stage, strengths, interests and ambitions.",
+  // Was the last intro paragraph ("Explore the guides below to understand…").
+  // Split into a title and one line on UX review, 2026-11-03. Vishy to approve.
+  guidesTitle: "Explore our Parent Guides",
+  guidesBody: "Understand the choices ahead and prepare for more informed conversations with your child.",
   readLabel: "Read the Guide",
   comingLabel: "Guide coming soon",
   closing: {
