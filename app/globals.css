@@ -44,6 +44,12 @@
 }
 
 @layer components {
+  /* Home-page Parent Guides bar (components/layout/GuidesBanner.tsx). The home
+     hero adds this height to its top padding so the header never covers it. */
+  .home-hero { --guides-banner-h: 2.25rem; }
+  html.guides-banner-off .home-hero { --guides-banner-h: 0px; }
+  html.guides-banner-off .guides-banner { display: none; }
+
   .hero-gradient-bg {
     background:
       radial-gradient(circle at 88% 100%, rgba(32, 58, 107, 0.16) 0%, rgba(32, 58, 107, 0.08) 28%, transparent 56%),

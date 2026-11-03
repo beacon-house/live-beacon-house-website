@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import GuidesBanner from "@/components/layout/GuidesBanner";
 import { NAV_LINKS, CTA_URL, CTA_LABEL } from "@/lib/constants";
 
 export default function Header() {
@@ -9,6 +11,7 @@ export default function Header() {
   const [showHeaderCTA, setShowHeaderCTA] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHome = usePathname() === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,13 +64,14 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[72px] md:h-[70px] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || mobileMenuOpen
             ? "bg-[var(--bh-warm-ivory)] shadow-sm"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-content mx-auto px-6 md:px-8 lg:px-12 h-full">
+        {isHome && <GuidesBanner collapsed={scrolled} />}
+        <div className="max-w-content mx-auto px-6 md:px-8 lg:px-12 h-[72px] md:h-[70px]">
           <div className="flex items-center justify-between h-full">
             <a href="/" className="flex items-center flex-shrink-0 mr-5 lg:mr-8" aria-label="Beacon House">
               <Image
