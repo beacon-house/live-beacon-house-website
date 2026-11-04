@@ -42,12 +42,11 @@ export const FOOTER_QUICK_LINKS = [
   { label: "Careers", href: "/careers" },
 ] as const;
 
-// Home-page bar that points parents to the Parent Guides. Draft line reuses the
-// hub copy; Vishy approves the final wording before this goes to main.
+// Home-page bar that points parents to the Parent Guides. Line is Vishy's
+// (4 Nov 2026). Keep it short: on a 360px phone the bar has ~268px of text room.
 export const GUIDES_BANNER = {
   href: "/parent-guides",
-  text: "New: Parent Guides. Start with the question your family is facing.",
-  shortText: "New: Parent Guides.",
-  linkLabel: "Read the guides",
+  text: "Looking for clarity?",
+  linkLabel: "Read our Parent Guides",
   storageKey: "bh-guides-banner-dismissed",
 } as const;

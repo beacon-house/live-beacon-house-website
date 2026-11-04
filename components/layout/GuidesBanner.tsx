@@ -29,8 +29,7 @@ export default function GuidesBanner({ collapsed }: { collapsed: boolean }) {
           onClick={dismissGuidesBanner}
           className="min-w-0 truncate font-sans text-[0.75rem] md:text-[0.8125rem] text-[var(--bh-warm-ivory)]"
         >
-          <span className="md:hidden">{GUIDES_BANNER.shortText} </span>
-          <span className="hidden md:inline">{GUIDES_BANNER.text} </span>
+          {GUIDES_BANNER.text}{" "}
           <span className="font-semibold text-[var(--bh-warm-amber-light)] underline underline-offset-2 hover:text-[var(--bh-warm-amber)]">
             {GUIDES_BANNER.linkLabel}&nbsp;&rarr;
           </span>
