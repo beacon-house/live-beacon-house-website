@@ -39,8 +39,8 @@ function StatsGrid({ desktop = false }: { desktop?: boolean }) {
 
 export default function HeroSection() {
   return (
-    <section className="hero-gradient-bg relative w-full min-h-[100svh] md:h-[100dvh] flex flex-col justify-start md:justify-center overflow-hidden">
-      <div className="relative z-10 w-full max-w-content mx-auto px-6 pt-[88px] pb-10 min-h-[100svh] flex flex-col justify-center md:min-h-0 md:px-8 md:pt-[74px] md:pb-5 lg:px-12 lg:pt-[76px] lg:pb-6 md:grid md:flex-1 md:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.78fr)] md:items-center md:gap-10 lg:gap-14">
+    <section className="home-hero hero-gradient-bg relative w-full min-h-[100svh] md:h-[100dvh] flex flex-col justify-start md:justify-center overflow-hidden">
+      <div className="relative z-10 w-full max-w-content mx-auto px-6 pt-[calc(88px_+_var(--guides-banner-h,0px))] pb-10 min-h-[100svh] flex flex-col justify-center md:min-h-0 md:px-8 md:pt-[calc(74px_+_var(--guides-banner-h,0px))] md:pb-5 lg:px-12 lg:pt-[calc(76px_+_var(--guides-banner-h,0px))] lg:pb-6 md:grid md:flex-1 md:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.78fr)] md:items-center md:gap-10 lg:gap-14">
         <div className="w-full max-w-[640px] xl:max-w-[690px]">
           <h1
             className="animate-fade-in-up font-serif font-medium tracking-tight text-[var(--bh-deep-ink)] mb-3 md:mb-3 lg:mb-4"

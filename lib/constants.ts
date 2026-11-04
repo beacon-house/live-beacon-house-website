@@ -27,6 +27,7 @@ export const NAV_LINKS = [
   { label: "Our Program", href: "/our-program" },
   { label: "Our Results", href: "/our-results" },
   { label: "Case Studies", href: "/case-studies" },
+  { label: "Parent Guides", href: "/parent-guides" },
   { label: "Careers", href: "/careers" },
 ] as const;
 
@@ -37,5 +38,16 @@ export const FOOTER_QUICK_LINKS = [
   { label: "How We Build", href: "/#how-we-build" },
   { label: "The Journey", href: "/#journey" },
   { label: "FAQs", href: "/#faqs" },
+  { label: "Parent Guides", href: "/parent-guides" },
   { label: "Careers", href: "/careers" },
 ] as const;
+
+// Home-page bar that points parents to the Parent Guides. Draft line reuses the
+// hub copy; Vishy approves the final wording before this goes to main.
+export const GUIDES_BANNER = {
+  href: "/parent-guides",
+  text: "New: Parent Guides. Start with the question your family is facing.",
+  shortText: "New: Parent Guides.",
+  linkLabel: "Read the guides",
+  storageKey: "bh-guides-banner-dismissed",
+} as const;

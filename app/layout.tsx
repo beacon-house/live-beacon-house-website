@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import CTAAttribution from "@/components/shared/CTAAttribution";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
+import { GUIDES_BANNER } from "@/lib/constants";
 import "./globals.css";
 
 const lora = Lora({
@@ -37,8 +38,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lora.variable} ${jakarta.variable}`}>
+    <html
+      lang="en"
+      className={`${lora.variable} ${jakarta.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        {/* Runs before first paint: hides the Parent Guides bar for a visitor
+            who already closed it, so the home hero does not jump. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem(${JSON.stringify(GUIDES_BANNER.storageKey)}))document.documentElement.classList.add("guides-banner-off")}catch(e){}`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

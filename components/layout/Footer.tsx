@@ -18,7 +18,8 @@ const PATHS_WITH_OWN_FINAL_CTA = ["/our-story", "/our-results", "/our-program"];
 function hasOwnFinalCTA(pathname: string) {
   return (
     PATHS_WITH_OWN_FINAL_CTA.includes(pathname) ||
-    pathname.startsWith("/case-studies")
+    pathname.startsWith("/case-studies") ||
+    pathname.startsWith("/parent-guides")
   );
 }
 

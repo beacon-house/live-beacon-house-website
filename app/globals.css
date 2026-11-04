@@ -44,6 +44,12 @@
 }
 
 @layer components {
+  /* Home-page Parent Guides bar (components/layout/GuidesBanner.tsx). The home
+     hero adds this height to its top padding so the header never covers it. */
+  .home-hero { --guides-banner-h: 2.25rem; }
+  html.guides-banner-off .home-hero { --guides-banner-h: 0px; }
+  html.guides-banner-off .guides-banner { display: none; }
+
   .hero-gradient-bg {
     background:
       radial-gradient(circle at 88% 100%, rgba(32, 58, 107, 0.16) 0%, rgba(32, 58, 107, 0.08) 28%, transparent 56%),
@@ -137,5 +143,220 @@ body:has(.mobile-sticky-cta-bar) {
 
   .cta-press-hint {
     animation: none !important;
+  }
+}
+
+/* Parent guides: bullet dots and phone-width tables. */
+@layer components {
+  .guide-ul > li {
+    padding-left: 1.5rem;
+  }
+
+  .guide-ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.3rem;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background-color: var(--bh-navy);
+  }
+
+  @media (max-width: 767px) {
+    .guide-table table,
+    .guide-table tbody,
+    .guide-table tr,
+    .guide-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .guide-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .guide-table tr + tr {
+      border-top: 6px solid var(--bh-soft-blue-mist);
+    }
+
+    .guide-table td {
+      border-top: 0;
+      padding: 0.25rem 1.1rem 0.75rem;
+    }
+
+    .guide-table td:first-child {
+      padding-top: 1rem;
+      color: var(--bh-deep-ink);
+    }
+
+    .guide-table td:last-child {
+      padding-bottom: 1.1rem;
+    }
+
+    .guide-table td[data-label]:not([data-label=""])::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bh-navy);
+    }
+  }
+}
+
+/* Parent guides: run-in heads, the short answer and student stories. */
+@layer components {
+  .guide-lead > strong:first-child {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-family: var(--font-lora), Georgia, serif;
+    font-size: 1.15em;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--bh-navy);
+  }
+
+  /* Short answer: the first paragraph is the verdict, set large in serif.
+     The rest read as a ledger of options, divided by hairlines. */
+  .short-answer > p {
+    color: var(--bh-deep-ink);
+  }
+
+  .short-answer > p:first-child {
+    font-family: var(--font-lora), Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .short-answer > p:first-child > strong:first-child {
+    display: inline;
+    font-size: inherit;
+    color: var(--bh-deep-ink);
+    font-weight: 600;
+  }
+
+  .short-answer > p.guide-lead:not(:first-child) {
+    margin-top: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid var(--bh-border-blue-gray);
+    font-size: 1rem;
+  }
+
+  .short-answer > p.guide-lead:not(:first-child) + p:not(.guide-lead) {
+    border-top: 1px solid var(--bh-border-blue-gray);
+    padding-top: 1rem;
+    font-size: 0.92rem;
+    color: var(--bh-slate-text);
+  }
+
+  @media (min-width: 768px) {
+    .short-answer > p:first-child {
+      font-size: 1.3rem;
+    }
+  }
+
+  /* Stories from our work: set apart from advice with a navy rule. */
+  .guide-story > p {
+    border-left: 2px solid var(--bh-navy);
+    padding-left: 1.25rem;
+  }
+
+  .guide-story > p + p {
+    margin-top: 1.75rem;
+  }
+
+  /* Phones: in a stacked table, the first cell names the row. */
+  @media (max-width: 767px) {
+    .guide-table td:first-child {
+      font-family: var(--font-lora), Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--bh-navy);
+    }
+
+    .guide-table td:first-child::before {
+      display: none !important;
+    }
+  }
+}
+
+/* Parent guides editorial grid. Three columns, each with one job:
+   margin = where you are (stage, section, labels), text = what you read,
+   notes = sources beside the line they support. Every block starts on one of
+   these lines; an empty column means "nothing to place here", never leftover. */
+@layer components {
+  .ed-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 2.5rem;
+  }
+
+  .ed-margin,
+  .ed-text,
+  .ed-wide {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .ed-grid {
+      grid-template-columns: 180px minmax(0, 1fr);
+    }
+
+    .ed-margin {
+      grid-column: 1;
+    }
+
+    .ed-text,
+    .ed-wide {
+      grid-column: 2 / -1;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .ed-grid {
+      grid-template-columns: 200px 640px minmax(0, 1fr);
+      column-gap: 3rem;
+    }
+
+    .ed-text {
+      grid-column: 2;
+    }
+  }
+
+  /* Side notes: hidden until the notes column exists, then floated into it. */
+  .sidenote {
+    display: none;
+  }
+
+  @media (min-width: 1280px) {
+    .sidenote {
+      display: block;
+      float: right;
+      clear: right;
+      position: relative;
+      width: 168px;
+      margin-right: -216px;
+      margin-bottom: 0.75rem;
+      font-family: var(--font-jakarta), system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--bh-slate-text);
+      text-align: left;
+    }
+
+    .guide-table .sidenote {
+      display: none;
+    }
   }
 }

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import GuidesBanner from "@/components/layout/GuidesBanner";
 import { NAV_LINKS, CTA_URL, CTA_LABEL } from "@/lib/constants";
 
 export default function Header() {
@@ -9,6 +11,7 @@ export default function Header() {
   const [showHeaderCTA, setShowHeaderCTA] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHome = usePathname() === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,13 +64,14 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 h-[72px] md:h-[70px] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || mobileMenuOpen
             ? "bg-[var(--bh-warm-ivory)] shadow-sm"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-content mx-auto px-6 md:px-8 lg:px-12 h-full">
+        {isHome && <GuidesBanner collapsed={scrolled} />}
+        <div className="max-w-content mx-auto px-6 md:px-8 lg:px-12 h-[72px] md:h-[70px]">
           <div className="flex items-center justify-between h-full">
             <a href="/" className="flex items-center flex-shrink-0 mr-5 lg:mr-8" aria-label="Beacon House">
               <Image
@@ -80,19 +84,29 @@ export default function Header() {
               />
             </a>
 
-            <nav className="hidden xl:flex items-center space-x-5 xl:space-x-6 2xl:space-x-8">
+            {/* Eight links and the booking button do not fit one row. Once the
+                booking button appears, the links fold into the menu button. */}
+            <nav
+              className={`hidden items-center space-x-5 xl:space-x-6 ${
+                showHeaderCTA ? "" : "xl:flex"
+              }`}
+            >
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="font-sans text-[0.75rem] xl:text-[0.8125rem] 2xl:text-sm font-medium text-[var(--bh-slate-text)] hover:text-[var(--bh-navy)] transition-colors whitespace-nowrap"
+                  className="font-sans text-[0.75rem] xl:text-[0.8125rem] font-medium text-[var(--bh-slate-text)] hover:text-[var(--bh-navy)] transition-colors whitespace-nowrap"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
 
-            <div className="hidden md:block xl:ml-6 2xl:ml-8">
+            <div
+              className={`hidden md:block md:ml-auto md:mr-3 xl:mr-0 ${
+                showHeaderCTA ? "xl:mr-4" : "xl:hidden"
+              }`}
+            >
               <a
                 href={CTA_URL}
                 target="_blank"
@@ -108,7 +122,9 @@ export default function Header() {
             </div>
 
             <button
-              className="xl:hidden flex flex-col items-center justify-center w-10 h-10 gap-1.5"
+              className={`flex flex-col items-center justify-center w-10 h-10 gap-1.5 ${
+                showHeaderCTA ? "" : "xl:hidden"
+              }`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
               aria-expanded={mobileMenuOpen}
@@ -133,8 +149,8 @@ export default function Header() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="xl:hidden bg-[var(--bh-warm-ivory)] border-t border-[var(--bh-border-blue-gray)]">
-            <nav className="max-w-content mx-auto px-6 py-4 flex flex-col gap-1">
+          <div className={`${showHeaderCTA ? "" : "xl:hidden"} bg-[var(--bh-warm-ivory)] border-t border-[var(--bh-border-blue-gray)]`}>
+            <nav className="max-w-content mx-auto px-6 md:px-8 lg:px-12 py-4 flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
@@ -150,7 +166,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-3 bg-[var(--bh-warm-amber)] text-[var(--bh-deep-ink)] px-6 py-3.5 rounded-lg font-sans font-semibold text-center shadow-[0_10px_22px_rgba(20,33,61,0.24),0_3px_0_rgba(20,33,61,0.24)]"
+                className="xl:hidden mt-3 bg-[var(--bh-warm-amber)] text-[var(--bh-deep-ink)] px-6 py-3.5 rounded-lg font-sans font-semibold text-center shadow-[0_10px_22px_rgba(20,33,61,0.24),0_3px_0_rgba(20,33,61,0.24)]"
               >
                 {CTA_LABEL}
               </a>
