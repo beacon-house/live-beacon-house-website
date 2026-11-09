@@ -58,7 +58,7 @@ export const parentGuides: ParentGuide[] = [
   {
     slug: "child-doesnt-know-what-to-study",
     stage: "class-8-9",
-    title: "How can we help our child explore which subjects or fields to pursue at university?",
+    title: "My child doesn’t know what to study. Where do we begin?",
     cardSummary:
       "Good marks, enthusiasm for a subject and a lasting academic interest are not always the same thing. Understand how exposure, reflection and small experiments can help a student identify the directions worth exploring further.",
     status: "live",

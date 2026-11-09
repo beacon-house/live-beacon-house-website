@@ -10,7 +10,7 @@ Start with what your child might want to study at university. Check which school
 
 ## Start with the courses your child might study
 
-Engineering, economics and biological sciences may require different school subjects. Your child does not need to have chosen a career, but the family needs some idea of what they might want to study. Our guide “How can we help our child explore which subjects or fields to pursue at university?” explains how to explore this.
+Engineering, economics and biological sciences may require different school subjects. Your child does not need to have chosen a career, but the family needs some idea of what they might want to study. Our guide “My child doesn’t know what to study. Where do we begin?” explains how to explore this.
 
 If the direction is still uncertain, list two or three fields your child might want to study and compare the subjects each requires. The aim is to keep realistic options open, rather than take every difficult subject just in case.
 
@@ -115,7 +115,7 @@ Write down two or three fields your child might study. For each, list a few univ
 
 If the subjects needed for different options cannot all fit, decide which options matter most. The aim is not to keep every door open. It is to understand which doors the choice opens and closes before making it.
 
-If your child has no area of interest yet, read “How can we help our child explore which subjects or fields to pursue at university?” If the question is which board, read “IB, A-levels or CBSE: how should we choose?”
+If your child has no area of interest yet, read “My child doesn’t know what to study. Where do we begin?” If the question is which board, read “IB, A-levels or CBSE: how should we choose?”
 
 We understand that this can feel bewildering. Different universities ask for different subjects, levels and grades, and it is not always clear which rules apply to your child.
 
