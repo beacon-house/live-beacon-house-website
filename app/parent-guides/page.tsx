@@ -60,47 +60,16 @@ export default function ParentGuidesPage() {
         }}
       />
 
-      {/* One fold of Vishy's framing, read top to bottom, then the guides. */}
-      <section className="about-gradient-ivory w-full">
-        <div className="mx-auto max-w-content px-6 pb-14 pt-28 md:px-8 md:pb-16 md:pt-32 lg:px-12">
-          <div className="ed-grid gap-y-4">
+      <section aria-label="All guides" className="w-full bg-white">
+        <div className="mx-auto max-w-content px-6 pb-14 pt-28 md:px-8 md:pb-20 md:pt-32 lg:px-12">
+          <div className="ed-grid mb-10 gap-y-4 md:mb-14">
             <p className="ed-margin font-sans text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-navy lg:pt-4">
               {hub.eyebrow}
             </p>
-            <h1 className="ed-wide font-serif text-[2.2rem] font-medium leading-[1.08] text-deep-ink md:text-[3rem] xl:text-[3.4rem]">
-              <span className="md:block">Make informed decisions </span>
-              <span className="md:block">at the moments that matter.</span>
-            </h1>
-            <div className="ed-text mt-3 space-y-3 text-[1.02rem] leading-[1.7] text-slate">
-              {hub.intro.map((p) => (
-                <p key={p}>{p}</p>
-              ))}
-            </div>
-            <div className="ed-text mt-6">
-              <h2 className="font-serif text-[1.4rem] leading-[1.25] text-deep-ink md:text-[1.6rem]">
-                {hub.startTitle}
-              </h2>
-              <ul className="mt-4 space-y-2.5 text-[1.02rem] leading-[1.6] text-slate">
-                {hub.startSituations.map((s) => (
-                  <li key={s} className="flex gap-3">
-                    <span aria-hidden="true" className="mt-[0.6em] h-[6px] w-[6px] flex-shrink-0 rounded-full bg-amber" />
-                    <span>{s}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 text-[1.02rem] leading-[1.7] text-slate">{hub.startBody}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section aria-label="All guides" className="w-full bg-white">
-        <div className="mx-auto max-w-content px-6 py-14 md:px-8 md:py-20 lg:px-12">
-          <div className="ed-grid mb-10 md:mb-14">
-            <div className="ed-text">
-              <h2 className="font-serif text-[1.6rem] font-medium leading-[1.2] text-deep-ink md:text-[2rem]">
+            <div className="ed-wide">
+              <h1 className="font-serif text-[2.2rem] font-medium leading-[1.08] text-deep-ink md:text-[3rem]">
                 {hub.guidesTitle}
-              </h2>
+              </h1>
               <p className="mt-3 text-[1.02rem] leading-[1.7] text-slate">{hub.guidesBody}</p>
             </div>
           </div>
