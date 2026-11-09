@@ -114,7 +114,7 @@ Check each university’s instructions before submitting the work. Where researc
 
 Before choosing a programme or mentor, establish what your child wants to investigate or create, what they are ready to do and where the time will come from. If the interest is still broad, begin with reading and practical tasks that help them choose a direction. If a project is already underway, decide whether it deserves more time before adding another.
 
-Our guides “My child doesn’t know what to study. Where do we begin?” and “What does a meaningful student profile look like?” explain those earlier decisions.
+Our guides “How can we help our child explore which subjects or fields to pursue at university?” and “What does a meaningful student profile look like?” explain those earlier decisions.
 
 Request a Strategic Review if you would like us to assess whether research, a capstone, both or neither would be useful for your child, and how the work should fit into their academic and university plan.
 
