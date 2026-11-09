@@ -26,14 +26,6 @@ export const parentGuidesHub = {
     "Subject choices, academic direction, activities and university plans are closely connected. A decision made today can shape the options available later.",
     "Our guides help families understand these connections, weigh the trade-offs and decide what deserves attention now.",
   ],
-  startTitle: "Start with the question your family is facing.",
-  // Vishy's paragraph, one sentence per bullet, words unchanged.
-  startSituations: [
-    "Some students have a clear interest but need to understand where it could lead.",
-    "Others are doing well academically without knowing what they want to study.",
-    "Many are already busy, yet unsure whether their effort is building towards anything meaningful.",
-  ],
-  startBody: "The right next step depends on the student’s stage, strengths, interests and ambitions.",
   // Was the last intro paragraph ("Explore the guides below to understand…").
   // Split into a title and one line on UX review, 2026-11-03. Vishy to approve.
   guidesTitle: "Explore our Parent Guides",
