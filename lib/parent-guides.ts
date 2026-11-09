@@ -21,6 +21,8 @@ export const PARENT_GUIDES_PATH = "/parent-guides";
 
 export const parentGuidesHub = {
   eyebrow: "Parent Guides",
+  // The hub no longer shows title and intro (Vishy, 2026-11-09). They stay as the
+  // search description and the CollectionPage schema text in app/parent-guides/page.tsx.
   title: "Make informed decisions at the moments that matter.",
   intro: [
     "Subject choices, academic direction, activities and university plans are closely connected. A decision made today can shape the options available later.",
@@ -45,20 +47,11 @@ export const parentGuidesHub = {
 
 const PUBLISHED = "2026-10-30";
 
-// Parent questions shown beside the hub headline. Each is the opening question
-// of its guide, word for word, and links to that guide.
-export const HUB_PARENT_QUESTIONS = [
-  { slug: "when-to-start-college-planning", text: "When should we start planning for college?" },
-  { slug: "is-class-11-too-late", text: "My child is already in Class 11. Are we too late?" },
-  { slug: "ib-vs-a-levels-vs-cbse", text: "Which board should we choose for universities abroad?" },
-  { slug: "research-or-capstone-project", text: "Does my child need a published research paper?" },
-];
-
 export const parentGuides: ParentGuide[] = [
   {
     slug: "child-doesnt-know-what-to-study",
     stage: "class-8-9",
-    title: "My child doesn’t know what to study. Where do we begin?",
+    title: "How can we help our child explore which subjects or fields to pursue at university?",
     cardSummary:
       "Good marks, enthusiasm for a subject and a lasting academic interest are not always the same thing. Understand how exposure, reflection and small experiments can help a student identify the directions worth exploring further.",
     status: "live",

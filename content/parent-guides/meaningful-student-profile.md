@@ -100,7 +100,7 @@ Most children come to us with activities already. Before dropping them or adding
 
 ## Where next
 
-If your child does not yet have an area of interest, start with “My child doesn’t know what to study. Where do we begin?” If the question is which subjects support the area of interest, read “Choosing subjects after Class 10”. If the question is research and a capstone, read “Research or a capstone project?”
+If your child does not yet have an area of interest, start with “How can we help our child explore which subjects or fields to pursue at university?” If the question is which subjects support the area of interest, read “Choosing subjects after Class 10”. If the question is research and a capstone, read “Research or a capstone project?”
 
 The drive has to come from the child. A real interest gives them a reason to persist when the work becomes difficult. At Beacon House, we help a child become clearly good at something they care about, and then make sure the application shows it.
 
